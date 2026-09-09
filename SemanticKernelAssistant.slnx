@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SemanticKernelAssistant.Web/SemanticKernelAssistant.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SemanticKernelAssistant.Tests/SemanticKernelAssistant.Tests.csproj" />
+  </Folder>
+</Solution>

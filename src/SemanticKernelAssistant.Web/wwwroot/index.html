@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Semantic Kernel Assistant</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">SK</span>
+        <div>
+          <strong>Semantic Kernel</strong>
+          <span>Local Assistant</span>
+        </div>
+      </div>
+
+      <button id="new-chat" class="new-chat" type="button">+ New conversation</button>
+      <nav id="conversation-list" class="conversation-list" aria-label="Conversations"></nav>
+
+      <section class="reminder-panel">
+        <h2>Reminders</h2>
+        <p class="reminder-hint">Ask the assistant to set one, for example “remind me in 10 minutes to stretch”.</p>
+        <p class="reminder-hint">Allow browser alerts when a reminder fires.</p>
+        <button id="enable-notifications" class="notification-button" type="button">Enable notifications</button>
+        <div id="reminder-list" class="reminder-list" aria-live="polite"></div>
+      </section>
+
+      <div id="status-card" class="status-card" aria-live="polite">
+        <span id="status-dot" class="status-dot"></span>
+        <div>
+          <strong id="status-title">Checking Ollama…</strong>
+          <span id="status-message"></span>
+        </div>
+      </div>
+
+      <div id="google-status-card" class="status-card google-status-card" aria-live="polite">
+        <span id="google-status-dot" class="status-dot"></span>
+        <div>
+          <strong>Google Calendar</strong>
+          <span id="google-status-message">Checking Google…</span>
+          <div class="google-actions">
+            <button id="google-connect" class="google-button" type="button">Connect</button>
+            <button id="google-disconnect" class="google-button" type="button" hidden>Disconnect</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="chat">
+      <header class="chat-header">
+        <div>
+          <span class="eyebrow">PRIVATE · LOCAL · PERSISTENT</span>
+          <h1 id="conversation-title">New conversation</h1>
+        </div>
+      </header>
+
+      <section id="messages" class="messages" aria-live="polite">
+        <div id="empty-state" class="empty-state">
+          <span class="empty-mark">✦</span>
+          <h2>How can I help?</h2>
+          <p>Ask to set a reminder, invite a guest, or keep chatting. History stays in the local SQLite database.</p>
+        </div>
+      </section>
+
+      <div class="composer-wrap">
+        <div id="error-banner" class="error-banner" role="alert" hidden></div>
+        <form id="message-form" class="composer">
+          <label class="sr-only" for="message-input">Message</label>
+          <textarea
+            id="message-input"
+            rows="1"
+            maxlength="4000"
+            placeholder="Ask your local assistant…"
+            required></textarea>
+          <button id="send-button" type="submit" aria-label="Send message">↑</button>
+        </form>
+        <p class="hint">Try “invite teammate@gmail.com tomorrow 10am for 30 minutes called Project review” · Enter to send</p>
+      </div>
+    </main>
+  </div>
+  <div id="reminder-toast" class="reminder-toast" role="status" hidden></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
